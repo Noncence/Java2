@@ -41,5 +41,4 @@ public abstract class Sprite {
 
     void update(GameCanvas canvas, float deltaTime) {}
     void render(GameCanvas canvas, Graphics g) {}
-
 }
