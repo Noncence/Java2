@@ -7,8 +7,7 @@ public class GameCanvas extends JPanel {
 
     MainCircles listener;
     long lastFrameTime;
-    private Background background = new Background();
-
+    Background background = new Background();
     GameCanvas(MainCircles listener) {
         this.listener = listener;
         lastFrameTime = System.nanoTime();
@@ -27,7 +26,7 @@ public class GameCanvas extends JPanel {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        background.update(this, deltaTime);
+        background.setBg(this, deltaTime);
         repaint();
     }
 

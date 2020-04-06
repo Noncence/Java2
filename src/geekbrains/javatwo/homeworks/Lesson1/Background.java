@@ -2,13 +2,11 @@ package geekbrains.javatwo.homeworks.Lesson1;
 
 import java.awt.*;
 
-public class Background extends Sprite {
+public class Background {
     private final float timeInterval = 2f;
     private float timer;
 
-    @Override
-    void update(GameCanvas canvas, float deltaTime) {
-        super.update(canvas, deltaTime);
+    void setBg(GameCanvas canvas, float deltaTime) {
         timer += deltaTime;
         if (timer > timeInterval) {
             Color colorBg = new Color(
@@ -20,10 +18,4 @@ public class Background extends Sprite {
             timer = 0;
         }
     }
-
-    @Override
-    void render(GameCanvas canvas, Graphics g) {
-        super.render(canvas, g);
-    }
-
 }
