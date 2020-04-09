@@ -1,8 +1,13 @@
-package geekbrains.javatwo.homeworks.Lesson1;
+package geekbrains.javatwo.homeworks.lesson2.homework1.bricks;
+
+
+
+import geekbrains.javatwo.homeworks.lesson2.homework1.common.GameCanvas;
+import geekbrains.javatwo.homeworks.lesson2.homework1.common.Sprite;
 
 import java.awt.*;
 
-public class Ball extends Sprite {
+public class Brick extends Sprite {
 
     private final Color color = new Color (
             (int)(Math.random() * 255),
@@ -12,13 +17,20 @@ public class Ball extends Sprite {
     private float vX = (float)(100f + (Math.random() * 200f));
     private float vY = (float)(100f + (Math.random() * 200f));
 
-    Ball() {
+    Brick() {
         halfHeight = 20 + (float)(Math.random() * 50f);
         halfWidth = halfHeight;
     }
 
+    Brick(int x, int y) {
+        this();
+        this.x = x;
+        this.y = y;
+    }
+
+
     @Override
-    void update(GameCanvas canvas, float deltaTime) {
+    public void update(GameCanvas canvas, float deltaTime) {
         x += vX * deltaTime;
         y += vY * deltaTime;
         if (getLeft() < canvas.getLeft()) {
@@ -41,9 +53,9 @@ public class Ball extends Sprite {
     }
 
     @Override
-    void render(GameCanvas canvas, Graphics g) {
+    public void render(GameCanvas canvas, Graphics g) {
         g.setColor(color);
-        g.fillOval((int) getLeft(), (int) getTop(),
+        g.drawRect((int) getLeft(), (int) getTop(),
                 (int) getWidth(), (int) getHeight());
     }
 

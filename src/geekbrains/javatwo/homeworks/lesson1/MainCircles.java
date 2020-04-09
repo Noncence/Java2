@@ -1,4 +1,4 @@
-package geekbrains.javatwo.homeworks.Lesson1;
+package geekbrains.javatwo.homeworks.lesson1;
 
 import javax.swing.*;
 import java.awt.*;

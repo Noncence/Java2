@@ -1,14 +1,15 @@
-package geekbrains.javatwo.homeworks.Lesson1;
+package geekbrains.javatwo.homeworks.lesson2.homework1.common;
+
 
 import javax.swing.*;
 import java.awt.*;
 
 public class GameCanvas extends JPanel {
 
-    MainCircles listener;
+    GameCanvasListener listener;
     long lastFrameTime;
 
-    GameCanvas(MainCircles listener) {
+    public GameCanvas(GameCanvasListener listener) {
         this.listener = listener;
         lastFrameTime = System.nanoTime();
     }
