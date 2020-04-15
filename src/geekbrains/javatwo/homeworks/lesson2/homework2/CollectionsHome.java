@@ -1,5 +1,4 @@
-package ru.gb.jtwo.c_lesson.home;
-
+package geekbrains.javatwo.homeworks.lesson2.homework2;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.TreeSet;
