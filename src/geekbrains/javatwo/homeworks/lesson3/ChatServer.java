@@ -1,4 +1,4 @@
-package ru.gb.jtwo.d_lesson.online;
+package geekbrains.javatwo.homeworks.lesson3;
 
 public class ChatServer {
     public void start(int port) {
