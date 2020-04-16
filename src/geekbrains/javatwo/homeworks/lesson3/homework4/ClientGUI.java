@@ -1,9 +1,13 @@
-package geekbrains.javatwo.homeworks.lesson3;
+package geekbrains.javatwo.homeworks.lesson3.homework4;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class ClientGUI extends JFrame implements ActionListener, Thread.UncaughtExceptionHandler {
 
@@ -66,7 +70,21 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         add(scrLog, BorderLayout.CENTER);
         add(panelTop, BorderLayout.NORTH);
         add(panelBottom, BorderLayout.SOUTH);
+        // обработка клика
+        btnSend.addActionListener(this);
+        // обработка нажатия Enter
+        tfMessage.addActionListener(this);
+
         setVisible(true);
+
+    }
+
+    public static void writeBuffered(File file, String value) throws IOException {
+        if (!file.exists()) {
+            boolean created = file.createNewFile();}
+        PrintWriter out = new PrintWriter(new FileOutputStream(file, true));
+        out.println(value);
+        out.close();
     }
 
     @Override
@@ -74,6 +92,15 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         Object src = e.getSource();
         if (src == cbAlwaysOnTop) {
             setAlwaysOnTop(cbAlwaysOnTop.isSelected());
+        } else if (src == btnSend || src ==  tfMessage) {
+            String toLog = tfMessage.getText();
+            log.append(toLog + "\n");
+            // создание log файла
+            try {
+                writeBuffered(new File("log.txt"), toLog);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         } else {
             throw new RuntimeException("Unknown source:" + src);
         }
