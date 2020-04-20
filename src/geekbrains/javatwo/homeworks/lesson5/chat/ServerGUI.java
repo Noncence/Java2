@@ -1,6 +1,6 @@
-package geekbrains.javatwo.homeworks.lesson4.chat;
+package geekbrains.javatwo.homeworks.lesson5.chat;
 
-import geekbrains.javatwo.homeworks.lesson3.ChatServer;
+import geekbrains.javatwo.homeworks.lesson4.ChatServer;
 
 import javax.swing.*;
 import java.awt.*;

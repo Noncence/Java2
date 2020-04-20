@@ -1,4 +1,4 @@
-package geekbrains.javatwo.homeworks.lesson4.network;
+package geekbrains.javatwo.homeworks.lesson5.network;
 
 public class ServerSocketThread extends Thread {
 

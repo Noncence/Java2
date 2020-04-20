@@ -1,6 +1,4 @@
-package geekbrains.javatwo.homeworks.lesson2.homework2;
-
-import geekbrains.javatwo.homeworks.lesson2.homework2.Person;
+package geekbrains.javatwo.homeworks.lesson3;
 
 import java.util.ArrayList;
 import java.util.HashMap;

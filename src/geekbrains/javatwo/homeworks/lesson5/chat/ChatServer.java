@@ -1,7 +1,7 @@
-package geekbrains.javatwo.homeworks.lesson4.chat;
+package geekbrains.javatwo.homeworks.lesson5.chat;
 
 
-import geekbrains.javatwo.homeworks.lesson4.network.ServerSocketThread;
+import geekbrains.javatwo.homeworks.lesson5.network.ServerSocketThread;
 
 public class ChatServer {
 

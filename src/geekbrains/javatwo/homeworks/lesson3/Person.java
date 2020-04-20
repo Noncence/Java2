@@ -1,4 +1,4 @@
-package geekbrains.javatwo.homeworks.lesson2.homework2;
+package geekbrains.javatwo.homeworks.lesson3;
 
 public class Person {
     public String phone;

@@ -1,4 +1,4 @@
-package geekbrains.javatwo.homeworks.lesson4;
+package geekbrains.javatwo.homeworks.lesson5;
 
 public class MyThread extends Thread {
 

@@ -1,11 +1,9 @@
-package geekbrains.javatwo.homeworks.lesson4.chat;
+package geekbrains.javatwo.homeworks.lesson4;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class ClientGUI extends JFrame implements ActionListener, Thread.UncaughtExceptionHandler {
 
@@ -27,7 +25,6 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
     private final JButton btnSend = new JButton("Send");
 
     private final JList<String> userList = new JList<>();
-    private boolean shownIoErrors = false;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -54,9 +51,6 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         log.setWrapStyleWord(true);
         log.setEditable(false);
         cbAlwaysOnTop.addActionListener(this);
-        tfMessage.addActionListener(this);
-        btnSend.addActionListener(this);
-        btnLogin.addActionListener(this);
 
         panelTop.add(tfIPAddress);
         panelTop.add(tfPort);
@@ -80,66 +74,19 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         Object src = e.getSource();
         if (src == cbAlwaysOnTop) {
             setAlwaysOnTop(cbAlwaysOnTop.isSelected());
-        } else if (src == btnSend || src == tfMessage) {
-            sendMessage();
-        } else if (src == btnLogin) {
-            for (long i = 0; i < 10_000_000_000L; i++) {
-                long a = i * 432;
-            }
         } else {
             throw new RuntimeException("Unknown source:" + src);
-        }
-    }
-
-    private void sendMessage() {
-        String msg = tfMessage.getText();
-        String username = tfLogin.getText();
-        if ("".equals(msg)) return;
-        tfMessage.setText(null);
-        tfMessage.requestFocusInWindow();
-        putLog(String.format("%s: %s", username, msg));
-        //wrtMsgToLogFile(msg, username);
-    }
-
-    private void wrtMsgToLogFile(String msg, String username) {
-        try (FileWriter out = new FileWriter("log.txt", true)) {
-            out.write(username + ": " + msg + System.lineSeparator());
-            out.flush();
-        } catch (IOException e) {
-            if (!shownIoErrors) {
-                shownIoErrors = true;
-                showException(Thread.currentThread(), e);
-            }
-        }
-    }
-
-    private void putLog(String msg) {
-        if ("".equals(msg)) return;
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                log.append(msg + System.lineSeparator());
-                log.setCaretPosition(log.getDocument().getLength());
-            }
-        });
-    }
-
-    private void showException(Thread t, Throwable e) {
-        String msg;
-        StackTraceElement[] ste = e.getStackTrace();
-        if (ste.length == 0)
-            msg = "Empty Stacktrace";
-        else {
-            msg = String.format("Exception in \"%s\" %s: %s\n\tat %s",
-                    t.getName(), e.getClass().getCanonicalName(), e.getMessage(), ste[0]);
-            JOptionPane.showMessageDialog(this, msg, "Exception", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     @Override
     public void uncaughtException(Thread t, Throwable e) {
         e.printStackTrace();
-        showException(t, e);
+        String msg;
+        StackTraceElement[] ste = e.getStackTrace();
+        msg = String.format("Exception in \"%s\" %s: %s\n\tat %s",
+                t.getName(), e.getClass().getCanonicalName(), e.getMessage(), ste[0]);
+        JOptionPane.showMessageDialog(this, msg, "Exception", JOptionPane.ERROR_MESSAGE);
         System.exit(1);
     }
 }
